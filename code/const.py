@@ -1,0 +1,15 @@
+# COLORS
+COLOR_PRIMARY = (255, 128, 0)
+COLOR_WHITE = (255, 255, 255)
+COLOR_BLACK = (0, 0, 0)
+
+# MENU OPTIONS
+MENU_OPTIONS = ('NEW GAME 1P',
+                'NEW GAME 2P - COOPERATIVE',
+                'NEW GAME 2P - COMPETITIVE',
+                'SCORE',
+                'EXIT')
+
+# WINDOW
+WINDOW_HEIGHT = 576
+WINDOW_WIDTH = 324
