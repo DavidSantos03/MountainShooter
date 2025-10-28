@@ -4,7 +4,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import COLOR_PRIMARY, WINDOW_WIDTH, COLOR_WHITE, WINDOW_HEIGHT, MENU_OPTIONS
+from code.Const import COLOR_PRIMARY, WINDOW_WIDTH, COLOR_WHITE, WINDOW_HEIGHT, MENU_OPTIONS, EVENT_ENEMY
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -20,6 +20,7 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if self.game_mode in [MENU_OPTIONS[1], MENU_OPTIONS[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(EVENT_ENEMY, 2000)
 
     def run(self):
         pygame.mixer_music.load(f'./assets/sounds/{self.name}.mp3')
@@ -35,6 +36,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity('Enemy1'))
+
 
             # Printed Text
             self.build_level_text(20, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_WHITE, (10, WINDOW_HEIGHT - 572))
